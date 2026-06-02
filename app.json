@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "temp",
-    "slug": "temp",
+    "name": "comprar",
+    "slug": "comprar",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "temp",
+    "scheme": "comprar",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
