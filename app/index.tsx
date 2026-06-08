@@ -22,9 +22,29 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Text>Login</Text>
-      <TextInput placeholder="Usuário" onChangeText={setUser} />
-      <TextInput placeholder="Senha" secureTextEntry onChangeText={setPass} />
+      <Text style={styles.title}>Login</Text>
+
+      <View style={styles.inputGroup}>
+        <Text style={styles.label}>Usuário</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite seu usuário"
+          value={user}
+          onChangeText={setUser}
+        />
+      </View>
+
+      <View style={styles.inputGroup}>
+        <Text style={styles.label}>Senha</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Digite sua senha"
+          secureTextEntry
+          value={pass}
+          onChangeText={setPass}
+        />
+      </View>
+
       <Button title="Entrar" onPress={handleLogin} />
     </View>
   );
