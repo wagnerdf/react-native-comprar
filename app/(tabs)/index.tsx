@@ -1,12 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { Text, View } from "react-native";
+import { Image, View } from "react-native";
 
 import { styles } from "./styles";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>App Comprar 🚀</Text>
+      <Image source={require("@/assets/logo.png")} style={styles.logo} />
       <StatusBar style="auto" />
     </View>
   );

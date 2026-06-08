@@ -1,7 +1,9 @@
+import { Button } from "@/components/Button";
 import { useAuth } from "@/hooks/useAuth";
 import { router } from "expo-router";
 import { useState } from "react";
-import { Button, Text, TextInput, View } from "react-native";
+import { Text, TextInput, View } from "react-native";
+import { styles } from "./styles";
 
 export default function Login() {
   const { login } = useAuth();
@@ -19,11 +21,11 @@ export default function Login() {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Login</Text>
       <TextInput placeholder="Usuário" onChangeText={setUser} />
       <TextInput placeholder="Senha" secureTextEntry onChangeText={setPass} />
-      <Button title="Entrar" onPress={handleLogin} />
+      <Button onPress={handleLogin} />
     </View>
   );
 }

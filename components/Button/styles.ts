@@ -2,13 +2,16 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "red",
+    backgroundColor: "#2C46B1",
+    height: 48,
+    width: "100%",
+    borderRadius: 8,
     alignItems: "center",
     justifyContent: "center",
   },
-  logo: {
-    height: 34,
-    width: 134,
+  title: {
+    color: "#FFF",
+    fontSize: 14,
+    fontWeight: 600,
   },
 });
