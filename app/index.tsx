@@ -25,7 +25,7 @@ export default function Login() {
       <Text>Login</Text>
       <TextInput placeholder="Usuário" onChangeText={setUser} />
       <TextInput placeholder="Senha" secureTextEntry onChangeText={setPass} />
-      <Button onPress={handleLogin} />
+      <Button title="Entrar" onPress={handleLogin} />
     </View>
   );
 }
