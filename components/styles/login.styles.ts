@@ -26,11 +26,11 @@ export const styles = StyleSheet.create({
   },
 
   input: {
-    width: "100%",
     height: 48,
+    paddingHorizontal: 12,
+    width: "100%",
     backgroundColor: "#fff",
     borderRadius: 8,
-    paddingHorizontal: 12,
     borderWidth: 1,
     borderColor: "#ccc",
   },
@@ -47,5 +47,22 @@ export const styles = StyleSheet.create({
   },
   form: {
     gap: 16,
+  },
+  inputWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
+    backgroundColor: "#fff",
+  },
+  eye: {
+    paddingHorizontal: 12,
+    fontSize: 18,
+  },
+  inputWithIcon: {
+    flex: 1,
+    height: 48,
+    paddingHorizontal: 12,
   },
 });
