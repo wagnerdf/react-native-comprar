@@ -6,11 +6,10 @@ export const styles = StyleSheet.create({
     backgroundColor: "#d0d2d8",
     padding: 24,
     justifyContent: "center",
-    gap: 20,
   },
 
   title: {
-    fontSize: 24,
+    fontSize: 35,
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 10,
@@ -18,7 +17,7 @@ export const styles = StyleSheet.create({
 
   inputGroup: {
     width: "100%",
-    gap: 6,
+    gap: 4,
   },
 
   label: {
@@ -34,5 +33,19 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderWidth: 1,
     borderColor: "#ccc",
+  },
+  logo: {
+    width: "80%",
+    height: 80,
+    alignSelf: "center",
+    marginBottom: 10,
+  },
+  header: {
+    alignItems: "center",
+    marginTop: 60,
+    marginBottom: 30,
+  },
+  form: {
+    gap: 16,
   },
 });

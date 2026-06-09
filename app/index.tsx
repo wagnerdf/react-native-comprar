@@ -3,7 +3,7 @@ import { styles } from "@/components/styles/login.styles";
 import { useAuth } from "@/hooks/useAuth";
 import { router } from "expo-router";
 import { useState } from "react";
-import { Text, TextInput, View } from "react-native";
+import { Image, Text, TextInput, View } from "react-native";
 
 export default function Login() {
   const { login } = useAuth();
@@ -22,30 +22,40 @@ export default function Login() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-
-      <View style={styles.inputGroup}>
-        <Text style={styles.label}>Usuário</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Digite seu usuário"
-          value={user}
-          onChangeText={setUser}
+      <View style={styles.header}>
+        <Image
+          source={require("@/assets/logo-1x.png")}
+          style={styles.logo}
+          resizeMode="contain"
         />
+
+        <Text style={styles.title}>Login</Text>
       </View>
 
-      <View style={styles.inputGroup}>
-        <Text style={styles.label}>Senha</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Digite sua senha"
-          secureTextEntry
-          value={pass}
-          onChangeText={setPass}
-        />
-      </View>
+      <View style={styles.form}>
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Usuário</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Digite seu usuário"
+            value={user}
+            onChangeText={setUser}
+          />
+        </View>
 
-      <Button title="Entrar" onPress={handleLogin} />
+        <View style={styles.inputGroup}>
+          <Text style={styles.label}>Senha</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Digite sua senha"
+            secureTextEntry
+            value={pass}
+            onChangeText={setPass}
+          />
+        </View>
+
+        <Button title="Entrar" onPress={handleLogin} />
+      </View>
     </View>
   );
 }
