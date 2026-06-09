@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { Image, View } from "react-native";
 
-import { styles } from "./styles";
+import { styles } from "@/components/styles/tabs.styles";
 
 export default function App() {
   return (

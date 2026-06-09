@@ -1,9 +1,9 @@
 import { Button } from "@/components/Button";
+import { styles } from "@/components/styles/login.styles";
 import { useAuth } from "@/hooks/useAuth";
 import { router } from "expo-router";
 import { useState } from "react";
 import { Text, TextInput, View } from "react-native";
-import { styles } from "./styles";
 
 export default function Login() {
   const { login } = useAuth();
