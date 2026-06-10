@@ -1,16 +1,18 @@
-import { StatusBar } from "expo-status-bar";
 import { Image, View } from "react-native";
 
 import { Button } from "@/components/Button";
+import { Input } from "@/components/Input";
 import { styles } from "@/components/styles/tabs.styles";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Image source={require("@/assets/logo.png")} style={styles.logo} />
-      <StatusBar style="auto" />
 
-      <Button title="Entrar" />
+      <View style={styles.content}>
+        <Input placeholder="O que você precisa comprar?" />
+        <Button title="Entrar" />
+      </View>
     </View>
   );
 }
