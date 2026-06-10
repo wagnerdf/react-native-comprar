@@ -1,8 +1,10 @@
 import { Image, View } from "react-native";
 
 import { Button } from "@/components/Button";
+import { Filter } from "@/components/Filter";
 import { Input } from "@/components/Input";
 import { styles } from "@/components/styles/tabs.styles";
+import { FilterStatus } from "@/types/FilterStatus";
 
 export default function App() {
   return (
@@ -14,7 +16,10 @@ export default function App() {
         <Button title="Entrar" />
       </View>
 
-      <View style={styles.content}></View>
+      <View style={styles.content}>
+        <Filter status={FilterStatus.DONE} isActive />
+        <Filter status={FilterStatus.PENDING} isActive={false} />
+      </View>
     </View>
   );
 }
