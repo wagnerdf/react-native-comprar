@@ -1,4 +1,4 @@
-import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 
 import { Button } from "@/components/Button";
 import { Filter } from "@/components/Filter";
@@ -9,6 +9,7 @@ import { styles } from "@/components/styles/tabs.styles";
 import { FilterStatus } from "@/types/FilterStatus";
 
 const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
+const ITEMS = Array.from({ length: 100 }).map((_, index) => String(index));
 
 export default function App() {
   return (
@@ -30,16 +31,18 @@ export default function App() {
             <Text style={styles.clearText}>Limpar</Text>
           </TouchableOpacity>
         </View>
-        <ScrollView>
-          {Array.from({ length: 100 }).map((value, index) => (
+
+        <FlatList
+          data={ITEMS}
+          keyExtractor={(item) => item}
+          renderItem={({ item }) => (
             <Item
-              key={index}
-              data={{ status: FilterStatus.DONE, description: "Café" }}
+              data={{ status: FilterStatus.DONE, description: item }}
               onStatus={() => console.log("Mudar o status")}
               onRemove={() => console.log("Remover")}
             />
-          ))}
-        </ScrollView>
+          )}
+        />
       </View>
     </View>
   );
