@@ -9,7 +9,32 @@ import { styles } from "@/components/styles/tabs.styles";
 import { FilterStatus } from "@/types/FilterStatus";
 
 const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
-const ITEMS = Array.from({ length: 100 }).map((_, index) => String(index));
+const ITEMS = [
+  { id: "1", status: FilterStatus.DONE, description: "1 pacote de cafe" },
+  { id: "2", status: FilterStatus.PENDING, description: "2 pacote de feijão" },
+  { id: "3", status: FilterStatus.PENDING, description: "1 lata de oleo" },
+  { id: "4", status: FilterStatus.DONE, description: "3 pacotes de macarrão" },
+  { id: "5", status: FilterStatus.PENDING, description: "2 pacote de feijão" },
+  { id: "6", status: FilterStatus.PENDING, description: "1 lata de oleo" },
+  { id: "7", status: FilterStatus.DONE, description: "1 pacote de cafe" },
+  { id: "8", status: FilterStatus.PENDING, description: "2 pacote de feijão" },
+  { id: "9", status: FilterStatus.PENDING, description: "1 lata de oleo" },
+  { id: "10", status: FilterStatus.DONE, description: "3 pacotes de macarrão" },
+  { id: "11", status: FilterStatus.PENDING, description: "2 pacote de feijão" },
+  { id: "12", status: FilterStatus.PENDING, description: "1 lata de oleo" },
+  { id: "13", status: FilterStatus.DONE, description: "1 pacote de cafe" },
+  { id: "14", status: FilterStatus.PENDING, description: "2 pacote de feijão" },
+  { id: "15", status: FilterStatus.PENDING, description: "1 lata de oleo" },
+  { id: "16", status: FilterStatus.DONE, description: "3 pacotes de macarrão" },
+  { id: "17", status: FilterStatus.PENDING, description: "2 pacote de feijão" },
+  { id: "18", status: FilterStatus.PENDING, description: "1 lata de oleo" },
+  { id: "19", status: FilterStatus.DONE, description: "1 pacote de cafe" },
+  { id: "20", status: FilterStatus.PENDING, description: "2 pacote de feijão" },
+  { id: "21", status: FilterStatus.PENDING, description: "1 lata de oleo" },
+  { id: "22", status: FilterStatus.DONE, description: "3 pacotes de macarrão" },
+  { id: "23", status: FilterStatus.PENDING, description: "2 pacote de feijão" },
+  { id: "24", status: FilterStatus.PENDING, description: "1 lata de oleo" },
+];
 
 export default function App() {
   return (
@@ -34,13 +59,19 @@ export default function App() {
 
         <FlatList
           data={ITEMS}
-          keyExtractor={(item) => item}
+          keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
             <Item
-              data={{ status: FilterStatus.DONE, description: item }}
+              data={item}
               onStatus={() => console.log("Mudar o status")}
               onRemove={() => console.log("Remover")}
             />
+          )}
+          showsVerticalScrollIndicator={false}
+          ItemSeparatorComponent={() => <View style={styles.separator} />}
+          contentContainerStyle={styles.listContent}
+          ListEmptyComponent={() => (
+            <Text style={styles.empty}>Nenhum item aqui</Text>
           )}
         />
       </View>
