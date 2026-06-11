@@ -9,14 +9,21 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export function AuthProvider({ children }: any) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true); // declarado como true para logar sem autenticação, provisorio para a parte de desenvolvimento
 
+  /* Desabilitado temporariamente para mode de desenvolvimento
   function login(user: string, pass: string) {
     if (user === "admin" && pass === "123") {
       setIsAuthenticated(true);
       return true;
     }
     return false;
+  }
+  */
+  // Para testes sem login
+  function login(user: string, pass: string) {
+    setIsAuthenticated(true);
+    return true;
   }
 
   function logout() {
