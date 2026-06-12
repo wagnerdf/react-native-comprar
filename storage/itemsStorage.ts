@@ -18,6 +18,12 @@ async function get(): Promise<ItemStorageDTO[]> {
   }
 }
 
+async function getByStatus(status: FilterStatus): Promise<ItemStorageDTO[]> {
+  const items = await get();
+  return items.filter((item) => item.status === status);
+}
+
 export const ItemStorage = {
   get,
+  getByStatus,
 };
