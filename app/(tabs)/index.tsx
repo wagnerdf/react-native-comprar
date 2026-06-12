@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
@@ -12,6 +12,7 @@ import { Button } from "@/components/Button";
 import { Filter } from "@/components/Filter";
 import { Input } from "@/components/Input";
 import { Item } from "@/components/Item";
+import { ItemsStorage, ItemStorageDTO } from "@/storage/itemsStorage";
 
 import { styles } from "@/components/styles/tabs.styles";
 import { FilterStatus } from "@/types/FilterStatus";
@@ -21,9 +22,9 @@ const FILTER_STATUS: FilterStatus[] = [FilterStatus.PENDING, FilterStatus.DONE];
 export default function App() {
   const [filter, setFilter] = useState(FilterStatus.PENDING);
   const [description, setDescription] = useState("");
-  const [items, setItems] = useState<any>([]);
+  const [items, setItems] = useState<ItemStorageDTO[]>([]);
 
-  function handleAdd() {
+  async function handleAdd() {
     if (!description.trim()) {
       return Alert.alert("Adicionar", "Informe a descrição para adicionar.");
     }
@@ -32,7 +33,24 @@ export default function App() {
       description,
       status: FilterStatus.PENDING,
     };
+
+    await ItemsStorage.add(newItem);
+    await getItems();
   }
+
+  async function getItems() {
+    try {
+      const response = await ItemsStorage.get();
+      setItems(response);
+    } catch (error) {
+      console.log(error);
+      Alert.alert("Erro", "Não foi possivel filtrar os itens.");
+    }
+  }
+
+  useEffect(() => {
+    getItems();
+  }, []);
 
   return (
     <View style={styles.container}>
