@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
@@ -42,7 +42,7 @@ export default function App() {
     setDescription("");
   }
 
-  async function itemByStatus() {
+  const itemByStatus = useCallback(async () => {
     try {
       const response = await ItemsStorage.getByStatus(filter);
       setItems(response);
@@ -50,7 +50,7 @@ export default function App() {
       console.log(error);
       Alert.alert("Erro", "Não foi possivel filtrar os itens.");
     }
-  }
+  }, [filter]);
 
   async function handleRemove(id: string) {
     try {
@@ -64,7 +64,7 @@ export default function App() {
 
   useEffect(() => {
     itemByStatus();
-  }, [filter]);
+  }, [itemByStatus]);
 
   return (
     <View style={styles.container}>
