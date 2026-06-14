@@ -40,8 +40,15 @@ async function add(newItem: ItemStorageDTO): Promise<ItemStorageDTO[]> {
   return updatedItems;
 }
 
+async function remove(id: string): Promise<void> {
+  const items = await get();
+  const updatedItems = items.filter((item) => item.id !== id);
+  await save(updatedItems);
+}
+
 export const ItemsStorage = {
   get,
   getByStatus,
   add,
+  remove,
 };
