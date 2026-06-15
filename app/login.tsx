@@ -1,7 +1,7 @@
 import { Button } from "@/components/Button";
 import { styles } from "@/components/styles/login.styles";
 import { useAuth } from "@/hooks/useAuth";
-import { router } from "expo-router";
+import { router, Stack } from "expo-router";
 import { useState } from "react";
 import {
   Image,
@@ -30,62 +30,65 @@ export default function Login() {
   }
 
   return (
-    <KeyboardAvoidingView
-      style={{ flex: 1 }}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-    >
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={styles.container}>
-          <View style={styles.header}>
-            <Image
-              source={require("@/assets/logo-1x.png")}
-              style={styles.logo}
-              resizeMode="contain"
-            />
-
-            <Text style={styles.title}>Login</Text>
-          </View>
-
-          <View style={styles.form}>
-            <View style={styles.inputGroup}>
-              <Text style={styles.label}>Usuário</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="Digite seu usuário"
-                value={user}
-                onChangeText={setUser}
-                autoCapitalize="none"
-                keyboardType="email-address"
-                autoCorrect={false}
+    <>
+      <Stack.Screen options={{ headerShown: false }} />
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          <View style={styles.container}>
+            <View style={styles.header}>
+              <Image
+                source={require("@/assets/logo-1x.png")}
+                style={styles.logo}
+                resizeMode="contain"
               />
+
+              <Text style={styles.title}>Login</Text>
             </View>
 
-            <View style={styles.inputGroup}>
-              <Text style={styles.label}>Senha</Text>
-
-              <View style={styles.inputWrapper}>
+            <View style={styles.form}>
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Usuário</Text>
                 <TextInput
-                  style={styles.inputWithIcon}
-                  placeholder="Digite sua senha"
-                  secureTextEntry={!showPassword}
-                  value={pass}
-                  onChangeText={setPass}
+                  style={styles.input}
+                  placeholder="Digite seu usuário"
+                  value={user}
+                  onChangeText={setUser}
                   autoCapitalize="none"
+                  keyboardType="email-address"
+                  autoCorrect={false}
                 />
-
-                <Text
-                  style={styles.eye}
-                  onPress={() => setShowPassword(!showPassword)}
-                >
-                  {showPassword ? "🙈" : "👁️"}
-                </Text>
               </View>
-            </View>
 
-            <Button title="Entrar" onPress={handleLogin} />
+              <View style={styles.inputGroup}>
+                <Text style={styles.label}>Senha</Text>
+
+                <View style={styles.inputWrapper}>
+                  <TextInput
+                    style={styles.inputWithIcon}
+                    placeholder="Digite sua senha"
+                    secureTextEntry={!showPassword}
+                    value={pass}
+                    onChangeText={setPass}
+                    autoCapitalize="none"
+                  />
+
+                  <Text
+                    style={styles.eye}
+                    onPress={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? "🙈" : "👁️"}
+                  </Text>
+                </View>
+              </View>
+
+              <Button title="Entrar" onPress={handleLogin} />
+            </View>
           </View>
-        </View>
-      </ScrollView>
-    </KeyboardAvoidingView>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </>
   );
 }

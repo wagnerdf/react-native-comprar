@@ -13,6 +13,7 @@ import { Filter } from "@/components/Filter";
 import { Input } from "@/components/Input";
 import { Item } from "@/components/Item";
 import { ItemsStorage, ItemStorageDTO } from "@/storage/itemsStorage";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import { styles } from "@/components/styles/tabs.styles";
 import { FilterStatus } from "@/types/FilterStatus";
@@ -94,52 +95,54 @@ export default function App() {
   }, [itemByStatus]);
 
   return (
-    <View style={styles.container}>
-      <Image source={require("@/assets/logo.png")} style={styles.logo} />
+    <SafeAreaView style={{ flex: 1 }} edges={["top"]}>
+      <View style={styles.container}>
+        <Image source={require("@/assets/logo.png")} style={styles.logo} />
 
-      <View style={styles.form}>
-        <Input
-          placeholder="O que você precisa comprar?"
-          onChangeText={setDescription}
-          value={description}
-        />
-        <Button title="Adicionar" onPress={handleAdd} />
-      </View>
-
-      <View style={styles.content}>
-        <View style={styles.header}>
-          {FILTER_STATUS.map((status) => (
-            <Filter
-              key={status}
-              status={status}
-              isActive={status === filter}
-              onPress={() => setFilter(status)}
-            />
-          ))}
-
-          <TouchableOpacity style={styles.clearButton} onPress={handleClear}>
-            <Text style={styles.clearText}>Limpar</Text>
-          </TouchableOpacity>
+        <View style={styles.form}>
+          <Input
+            placeholder="O que você precisa comprar?"
+            onChangeText={setDescription}
+            value={description}
+          />
+          <Button title="Adicionar" onPress={handleAdd} />
         </View>
 
-        <FlatList
-          data={items}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <Item
-              data={item}
-              onStatus={() => handleToggleItemStatus(item.id)}
-              onRemove={() => handleRemove(item.id)}
-            />
-          )}
-          showsVerticalScrollIndicator={false}
-          ItemSeparatorComponent={() => <View style={styles.separator} />}
-          contentContainerStyle={styles.listContent}
-          ListEmptyComponent={() => (
-            <Text style={styles.empty}>Nenhum item aqui</Text>
-          )}
-        />
+        <View style={styles.content}>
+          <View style={styles.header}>
+            {FILTER_STATUS.map((status) => (
+              <Filter
+                key={status}
+                status={status}
+                isActive={status === filter}
+                onPress={() => setFilter(status)}
+              />
+            ))}
+
+            <TouchableOpacity style={styles.clearButton} onPress={handleClear}>
+              <Text style={styles.clearText}>Limpar</Text>
+            </TouchableOpacity>
+          </View>
+
+          <FlatList
+            data={items}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => (
+              <Item
+                data={item}
+                onStatus={() => handleToggleItemStatus(item.id)}
+                onRemove={() => handleRemove(item.id)}
+              />
+            )}
+            showsVerticalScrollIndicator={false}
+            ItemSeparatorComponent={() => <View style={styles.separator} />}
+            contentContainerStyle={styles.listContent}
+            ListEmptyComponent={() => (
+              <Text style={styles.empty}>Nenhum item aqui</Text>
+            )}
+          />
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
